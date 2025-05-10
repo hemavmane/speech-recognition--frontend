@@ -98,7 +98,7 @@ export default function VoiceForm() {
 
           const messageValue = processedText.replace(/(my )?message is/, "").trim();
           if (messageValue) setMessage(messageValue);
-          
+
           break;
         default:
           break;
@@ -162,7 +162,7 @@ export default function VoiceForm() {
       setIsListening(false);
       setError(null);
   
-      const response = await fetch("http://localhost:5001/submit", {
+      const response = await fetch("https://speech-recognition-backends.onrender.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
