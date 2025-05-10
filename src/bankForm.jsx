@@ -51,6 +51,7 @@ export default function VoiceForm() {
       setIsListening(false);
     };
 
+
     recognition.onend = () => {
       setIsListening(false);
       moveToNextField();
@@ -81,6 +82,7 @@ export default function VoiceForm() {
           if (nameValue) setName(nameValue);
           break;
         case "email":
+          
           const emailValue = processedText
           .replace(/(my )?email is/gi, "")
           .replace(/\s+at\s+| at /gi, "@")
@@ -89,11 +91,14 @@ export default function VoiceForm() {
           .replace(/\s+dash\s+| dash /gi, "-")
           .replace(/\s/g, "") 
           .trim();
+
           if (emailValue) setEmail(emailValue);
           break;
         case "message":
+
           const messageValue = processedText.replace(/(my )?message is/, "").trim();
           if (messageValue) setMessage(messageValue);
+          
           break;
         default:
           break;
@@ -151,10 +156,26 @@ export default function VoiceForm() {
       return;
     }
 
+
+  
     try {
       setIsListening(false);
       setError(null);
-      await new Promise((res) => setTimeout(res, 1500));
+  
+      const response = await fetch("http://localhost:5001/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+  
+      const result = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(result.message || "Submission failed.");
+      }
+  
       setShowSuccess(true);
       setTimeout(() => {
         resetForm();
@@ -162,9 +183,10 @@ export default function VoiceForm() {
       }, 5000);
     } catch (err) {
       console.error(err);
-      setError("Submission failed. Try again.");
+      setError(err.message || "Submission failed. Try again.");
     }
   };
+  
 
   useEffect(() => {
     const completed = [name, email, message].filter(Boolean).length;
