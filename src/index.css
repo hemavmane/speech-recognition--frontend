@@ -1,0 +1,98 @@
+/* Card styles */
+.card {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Form Labels */
+.form-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Input Fields */
+.form-control {
+  border-radius: 0.5rem 0 0 0.5rem;
+  border-right: none;
+}
+
+/* Input with Button */
+.input-group .btn {
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* Progress bar */
+.progress {
+  height: 20px;
+  border-radius: 0.5rem;
+}
+
+/* Info alert for listening */
+.alert-info {
+  background-color: #e0f2fe;
+  border-color: #bae6fd;
+  color: #0369a1;
+}
+
+/* Listening alert */
+.alert-primary {
+  background-color: #f0f9ff;
+  border-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* Error alert */
+.alert-danger {
+  font-size: 0.9rem;
+  padding: 0.75rem;
+}
+
+/* Buttons */
+.btn-outline-secondary,
+.btn-primary {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #9333ea, #4f46e5);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #7e22ce, #4338ca);
+}
+
+/* Modal styles */
+.modal-content {
+  border-radius: 1rem;
+}
+
+.modal-header.bg-success {
+  background-color: #16a34a !important;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .card {
+    margin: 1rem;
+  }
+
+  .form-control {
+    font-size: 0.95rem;
+  }
+
+  .input-group .btn {
+    font-size: 0.95rem;
+  }
+}
